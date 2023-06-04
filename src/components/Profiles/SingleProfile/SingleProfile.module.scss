@@ -1,0 +1,79 @@
+@import "../../../sass/main.scss";
+
+.profile {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 1rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 49%;
+  min-height: 20rem;
+  // margin-bottom: 2rem;
+  transition: $transition-fast;
+  background-color: $bg-main-light;
+
+  &:hover {
+    background-color: $bg-third-hover !important;
+  }
+  &:hover * {
+    color: #ffffff !important;
+  }
+  &:hover .profile__separator {
+    border: 2px dashed #ffffff !important;
+    opacity: 0.5;
+  }
+
+  @include respond(md) {
+    flex-basis: 32%;
+  }
+
+  &__name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 1px;
+    color: $txt-light;
+    font-size: 1.7rem;
+  }
+
+  &__imgContainer {
+    position: absolute;
+    top: 5%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    filter: brightness(0.7);
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  &__date {
+    position: absolute;
+    top: 65%;
+    font-size: 1.15rem;
+    min-height: 40px;
+    width: 90%;
+  }
+
+  &__dateIcon {
+    color: $txt-light;
+    margin-right: 1rem;
+  }
+
+  &__dateNum {
+    color: $txt-light;
+  }
+
+  &__separator {
+    margin: 1rem 0;
+    border: 2px dashed $border-light-gray;
+    opacity: 0.1;
+  }
+}

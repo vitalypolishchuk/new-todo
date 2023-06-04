@@ -1,0 +1,122 @@
+@import "../../../sass/main.scss";
+
+.sidebar {
+  position: absolute;
+  left: -240px;
+  // width: 240px;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $bg-main-light;
+
+  &__showSidebar {
+    z-index: 1000;
+    width: 100vw;
+    max-width: 240px;
+    left: 0;
+    position: absolute;
+  }
+
+  @include respond(xl) {
+    flex-basis: 17vw;
+    // max-width: 260px;
+    position: static;
+    left: auto;
+  }
+
+  &__header {
+    color: $txt-light;
+    margin: 2.5rem 0 3.5rem 0;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+  &__addTask {
+    margin: 2.5rem 0 3.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__addTaskBtn {
+    cursor: pointer;
+    width: 90%;
+    height: 3.5rem;
+    background-color: $bg-third;
+    border: none;
+    color: #ffffff;
+    border-radius: 10px;
+    transition: $transition-fast;
+
+    &:hover {
+      background-color: $bg-third-hover;
+    }
+  }
+
+  &__task {
+    cursor: pointer;
+    font-size: 1.05rem;
+    margin: 1rem 0;
+    color: $txt-light;
+  }
+
+  &__taskLink {
+    width: calc(100% - 1.2rem);
+    display: inline-block;
+    padding: 0.5rem 0 0.5rem 1.2rem;
+  }
+
+  &__currentPage {
+    background-color: $bg-selected;
+    color: $clr-selected !important;
+    border-right: 4px solid $clr-selected;
+  }
+
+  &__currentPageDark {
+    background-color: $dark-bg-main-light;
+    color: $dark-txt-dark !important;
+    border-right: 4px solid $bg-main;
+  }
+}
+
+.directories {
+  font-size: 1.05rem;
+  margin-top: 2rem;
+
+  &__textContainer {
+    padding-left: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__svg {
+    width: 0.8rem;
+    transform: rotate(90deg);
+    margin-right: 0.8rem;
+    transition: transform 0.2s;
+  }
+
+  &__svgOpen {
+    transform: rotate(180deg);
+  }
+
+  &__text {
+    cursor: pointer;
+  }
+
+  &__values {
+    max-height: 185px;
+    overflow-y: auto;
+  }
+
+  &__addDirectory {
+    padding-left: 1.2rem;
+  }
+
+  &__addDirectoryBtn {
+    cursor: pointer;
+    background-color: transparent;
+    color: $txt-light;
+    padding: 0.4rem 0.8rem;
+    border: 3px dashed $dark-txt-dark !important;
+    border-radius: 9px;
+  }
+}

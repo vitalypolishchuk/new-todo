@@ -1,0 +1,152 @@
+@import "../../../sass/main.scss";
+
+.sidebar {
+  position: absolute;
+  right: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $bg-main-light;
+
+  &__showSidebar {
+    z-index: 1000;
+    width: 100vw;
+    max-width: 240px;
+    right: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  @include respond(xl) {
+    flex-basis: 17vw;
+    // max-width: 260px;
+    position: static;
+    left: auto;
+  }
+
+  &__userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2.5rem 0 1rem 0;
+    text-align: center;
+    font-size: 1.3rem;
+    height: 30px;
+  }
+
+  &__userName {
+    color: $txt-light;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    margin-right: 1.2rem;
+  }
+
+  &__userImg {
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &__profiles {
+    width: 90%;
+    margin-bottom: 3rem;
+    margin-inline: auto;
+  }
+
+  &__profilesBtn {
+    cursor: pointer;
+    width: 100%;
+    height: 3.5rem;
+    background-color: $bg-third;
+    border: none;
+    color: #ffffff;
+    border-radius: 10px;
+    transition: $transition-fast;
+
+    &:hover {
+      background-color: $bg-third-hover;
+    }
+  }
+
+  &__darkMode {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  &__darkModeText {
+    color: $txt-light;
+  }
+
+  &__darkModeBtn {
+    background-color: $bg-main;
+    cursor: pointer;
+    padding: 0rem 1.35rem;
+    height: 20px;
+    border-radius: 10px;
+    position: relative;
+    border: none;
+  }
+
+  &__darkModeBtnFill {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: inline-block;
+    background-color: $bg-third;
+    border-radius: 50%;
+    height: 95%;
+    position: absolute;
+    width: 18px;
+  }
+
+  &__darkModeBtnClicked {
+    left: auto;
+    right: 0;
+  }
+
+  &__line {
+    width: 90%;
+    margin-inline: auto;
+    margin-top: 2rem;
+    height: 1.5px;
+    background-color: $bg-main;
+  }
+
+  &__todayTasksText {
+    width: 90%;
+    margin-inline: auto;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: $txt-light;
+  }
+
+  &__todayTasks {
+    height: 180px;
+    overflow-y: auto;
+    width: 80%;
+    margin-inline: auto;
+    color: rgba($txt-light, 0.2);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+  }
+
+  &__todayTask {
+    padding-bottom: 1rem;
+  }
+
+  &__delete {
+    margin-top: 4rem;
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  &__deleteBtn {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.05rem;
+    color: $txt-light;
+  }
+}

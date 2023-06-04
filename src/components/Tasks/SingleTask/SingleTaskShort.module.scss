@@ -1,0 +1,100 @@
+@import "../../../sass/main.scss";
+
+.task {
+  background-color: $bg-main-light;
+  border-radius: 9px;
+  width: calc(50% - 1rem);
+  margin-bottom: 2.5rem;
+  position: relative;
+  max-height: 250px;
+  overflow-y: scroll;
+
+  &__directory {
+    cursor: pointer;
+    border: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    top: -2.58rem;
+    color: $txt-uncompleted;
+    right: 2rem;
+    background-color: $clr-selected-light-2;
+    padding: 0.7rem 1.5rem;
+    position: absolute;
+  }
+
+  &__inner {
+    padding: 1rem;
+  }
+
+  &__header {
+    margin-bottom: 5rem;
+  }
+
+  &__separator {
+    margin: 1rem 0;
+    border: 2px dashed $border-light-gray;
+    opacity: 0.1;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  &__isCompleted {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 9px;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+  }
+
+  &__completed {
+    background-color: $bg-completed;
+    color: $txt-completed;
+  }
+
+  &__uncompleted {
+    background-color: $bg-uncompleted;
+    color: $txt-uncompleted;
+  }
+
+  &__isImportant {
+    color: $txt-completed;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+  }
+
+  &__important {
+    color: $clr-selected;
+  }
+
+  &__delete {
+    color: $txt-completed;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+  }
+
+  &__edit {
+    color: $txt-completed;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+  }
+
+  &__dateIcon {
+    color: $txt-completed;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+  }
+
+  &__dateNum {
+    color: $txt-completed;
+    font-size: 1.1rem;
+  }
+}

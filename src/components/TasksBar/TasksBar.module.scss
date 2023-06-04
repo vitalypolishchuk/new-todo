@@ -1,0 +1,30 @@
+@import "../../sass/main.scss";
+
+.sidebar {
+  &__allTasks {
+    width: 90%;
+    margin-inline: auto;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: $txt-light;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__tasksBar {
+    position: relative;
+    height: 8px;
+    width: 90%;
+    border-radius: 10px;
+    margin-inline: auto;
+    background-color: $bg-main;
+  }
+
+  &__taskBarFilled {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background-color: $bg-third;
+    border-radius: 10px;
+  }
+}

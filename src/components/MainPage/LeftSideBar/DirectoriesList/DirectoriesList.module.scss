@@ -1,0 +1,43 @@
+@import "../../../../sass/main.scss";
+
+.element {
+  cursor: pointer;
+  font-size: 1.05rem;
+  margin: 1rem 0;
+  color: $txt-light;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__link {
+    width: calc(100% - 1.2rem);
+    display: inline-block;
+    padding: 0.4rem 0 0.4rem 1.2rem;
+  }
+
+  &__btns {
+    width: 80px;
+  }
+
+  &__edit {
+    margin-right: 1rem;
+  }
+
+  &__edit,
+  &__delete {
+    font-size: 1rem;
+    display: inline-block;
+  }
+
+  &__currentPage {
+    background-color: $bg-selected;
+    color: $clr-selected !important;
+    border-right: 4px solid $clr-selected;
+  }
+
+  &__currentPageDark {
+    background-color: $dark-bg-main-light-2;
+    color: $dark-txt-light !important;
+    border-right: 4px solid $bg-main;
+  }
+}

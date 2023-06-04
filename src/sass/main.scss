@@ -75,7 +75,93 @@ input:focus {
   outline: none;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  color: transparent;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(154, 154, 154, 0.4);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(133, 133, 133, 0.6);
+}
+
 .App {
   min-height: 100vh;
   background-color: $bg-main;
+}
+
+.bg {
+  background-color: $bg-main !important;
+}
+
+.bg-2 {
+  background-color: $bg-main-light !important;
+}
+
+.dark-bg {
+  background-color: $dark-bg-main !important;
+}
+
+.dark-bg-2 {
+  background-color: $dark-bg-main-light !important;
+}
+
+.dark-bg-3 {
+  background-color: $dark-bg-main-light-2 !important;
+}
+
+.bg-third {
+  background-color: #7c3aed !important;
+}
+
+.dark-bg-third {
+  background-color: $dark-bg-third !important;
+}
+
+.text-clr {
+  color: $txt-light !important;
+}
+
+.dark-text-clr {
+  color: $dark-txt-light !important;
+}
+
+.dark-text-clr-2 {
+  color: $dark-txt-dark !important;
+}
+
+.clr-selected {
+  color: $clr-selected !important;
+}
+
+.txt-third {
+  color: $txt-third;
+}
+
+.bg-red {
+  background-color: rgb(118, 48, 48) !important;
+}
+
+.dark-border {
+  border: 3px dashed $dark-txt-light !important;
+}
+
+.dark-border-1px-solid {
+  border: 1px solid $border-light-gray !important;
+}
+
+.overlay-dark {
+  background-color: rgba(255, 255, 255, 0.5) !important;
 }

@@ -1,0 +1,31 @@
+@import "../../sass/main.scss";
+
+.radio {
+  display: flex;
+  align-items: center;
+
+  &__container {
+    position: relative;
+    display: inline-block;
+    height: 21px;
+    width: 21px;
+    border-radius: 50%;
+    margin-right: 0.9rem;
+    border: 1px solid rgba($dark-bg-main, 0.1);
+  }
+
+  &__selected {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: $clr-selected;
+    height: 8px;
+    width: 8px;
+  }
+
+  &__text {
+    font-weight: 100;
+  }
+}

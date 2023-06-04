@@ -1,0 +1,89 @@
+@import "../../sass/main.scss";
+
+.container {
+  background-color: $bg-main;
+  height: 100vh;
+  overflow-y: auto;
+  @include respond(xl) {
+    flex-basis: 66vw;
+  }
+}
+
+.tasks {
+  &__number {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    width: 95%;
+    margin-inline: auto;
+    color: $txt-light;
+  }
+  &__iconsAndSort {
+    height: 50px;
+    width: 95%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  &__icons {
+    display: flex;
+    width: 65px;
+    height: 22px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__longTasksIcon {
+    cursor: pointer;
+  }
+
+  &__shortTasksIcon {
+    cursor: pointer;
+  }
+
+  &__container {
+    width: 95%;
+    margin-inline: auto;
+    display: flex;
+    gap: 3.5rem;
+  }
+
+  &__containerLong {
+    flex-direction: column;
+  }
+
+  &__containerShort {
+    gap: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__addTask {
+    background-color: transparent;
+    cursor: pointer;
+    margin-bottom: 5rem;
+    border-radius: 9px;
+    border: 2px dashed rgba($border-light-gray, 0.4);
+    position: relative;
+  }
+
+  &__addShortTask {
+    width: calc(50% - 1rem);
+    height: 224.75px;
+  }
+
+  &__addLongTask {
+    height: 131.55px;
+  }
+
+  &__addTaskText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba($border-light-gray, 0.4);
+  }
+}

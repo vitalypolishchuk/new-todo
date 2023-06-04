@@ -1,0 +1,28 @@
+@import "../../../sass/main.scss";
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &__active {
+    background-color: #7c3aed;
+    color: #ffffff;
+  }
+
+  &__passive {
+    background-color: #f1f5f9;
+    color: #000000;
+  }
+
+  &__activeHover {
+    background-color: #7335dc;
+    color: #ffffff;
+  }
+
+  &__passiveHover {
+    background-color: #c5c7ca;
+    color: #000000;
+  }
+}

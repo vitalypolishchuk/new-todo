@@ -1,0 +1,27 @@
+@import "../../sass/main.scss";
+
+.select {
+  &__label {
+    background-color: inherit;
+    font-family: sans-serif;
+    color: rgb(52, 52, 52);
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  &__container {
+    box-sizing: border-box;
+    background-color: $bg-main-light;
+    border: none;
+    letter-spacing: 1.5px;
+    border-radius: 9px;
+    padding: 1rem;
+
+    &:focus {
+      outline: 2px solid $bg-third-hover;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import "../../sass/main.scss";
+
+.navigation {
+  &__search {
+    height: 50px;
+    position: relative;
+    border-radius: 9px;
+    background-color: $bg-main-light;
+
+    &:hover {
+      outline: 2px solid $bg-third-hover;
+    }
+  }
+
+  &__searchInput {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    font-size: 1.05rem;
+  }
+
+  &__searchIcon {
+    color: rgba($dark-bg-main, 0.3);
+    font-size: 1.3rem;
+    position: absolute;
+    top: 50%;
+    right: 0rem;
+    transform: translate(-50%, -50%);
+  }
+
+  &__matches {
+    position: absolute;
+    width: 100%;
+    border-radius: 9px;
+    margin-top: 0.5rem;
+    background-color: $bg-main-light;
+  }
+
+  &__match {
+    cursor: pointer;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+}
