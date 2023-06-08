@@ -81,7 +81,7 @@ const NewTask = ({ task, setEditTask }: propsType) => {
       dispatch(
         editTask({
           userId: currentProfile.userId,
-          info: { taskId, title, date: convertedDate, description, directory, isImportant, isCompleted },
+          info: { taskId: task.info.taskId, title, date: convertedDate, description, directory, isImportant, isCompleted },
         })
       );
       setEditTask({});

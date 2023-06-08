@@ -34,7 +34,7 @@ const Select = ({ description, value, height, width, maxWidth, fontSize, margin,
       >
         {options.map((name: string) => {
           return (
-            <option key={name} value={name.toLowerCase()}>
+            <option key={name} value={name}>
               {name}
             </option>
           );

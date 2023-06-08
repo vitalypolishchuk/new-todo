@@ -29,15 +29,15 @@ const SingleTask = ({ task, handleComplete, handleImportant, handleDelete, setTa
   };
 
   return (
-    <div className={styles.task}>
+    <div className={`${styles.task} ${theme === "dark" && "dark-bg-2"}`}>
       <button className={styles.task__directory} onClick={handleNavigate}>
         {task.info.directory}
       </button>
       <div className={styles.task__inner}>
-        <h4 className={styles.task__header}>{task.info.title}</h4>
+        <h4 className={`${styles.task__header} ${theme === "dark" && "dark-text-clr"}`}>{task.info.title}</h4>
         <div className={styles.task__date}>
-          <FontAwesomeIcon className={styles.task__dateIcon} icon={faCalendarDays} />
-          <span className={styles.task__dateNum}>{task.info.date}</span>
+          <FontAwesomeIcon className={`${styles.task__dateIcon} ${theme === "dark" && "dark-text-clr"}`} icon={faCalendarDays} />
+          <span className={`${styles.task__dateNum} ${theme === "dark" && "dark-text-clr"}`}>{task.info.date}</span>
         </div>
         <div className={styles.task__separator}></div>
         <div className={styles.task__info}>
@@ -51,10 +51,18 @@ const SingleTask = ({ task, handleComplete, handleImportant, handleDelete, setTa
             <FontAwesomeIcon
               onClick={() => handleImportant(task)}
               className={`${styles.task__isImportant} ${theme === "dark" && "dark-text-clr"} ${task.info.isImportant && styles.task__important}`}
-              icon={starIcon}
+              icon={faStar}
             />
-            <FontAwesomeIcon onClick={() => handleDelete(task)} className={styles.task__delete} icon={faTrash} />
-            <FontAwesomeIcon onClick={() => setTaskForEdit(task)} className={styles.task__edit} icon={faEllipsisVertical} />
+            <FontAwesomeIcon
+              onClick={() => handleDelete(task)}
+              className={`${styles.task__delete} ${theme === "dark" && "dark-text-clr"}`}
+              icon={faTrash}
+            />
+            <FontAwesomeIcon
+              onClick={() => setTaskForEdit(task)}
+              className={`${styles.task__edit} ${theme === "dark" && "dark-text-clr"}`}
+              icon={faEllipsisVertical}
+            />
           </div>
         </div>
       </div>

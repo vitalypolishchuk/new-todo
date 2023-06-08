@@ -48,7 +48,7 @@ const Tasks = () => {
         const dir = currentDirectories.directories.find((dirName: string) => dirName === urlId);
         if (dir) {
           return currentTasks.filter(({ info }: taskType) => {
-            return info.directory.toLowerCase() === urlId.toLocaleLowerCase();
+            return info.directory === urlId;
           });
         }
         return [];
@@ -99,7 +99,9 @@ const Tasks = () => {
     <>
       <div className={`${styles.container} ${theme === "dark" && "dark-bg"}`}>
         <Navigation />
-        <h2 className={styles.tasks__number}>All tasks (6 tasks)</h2>
+        <h2 className={`${styles.tasks__number} ${theme === "dark" && "dark-text-clr-2"}`}>
+          All tasks ({tasksArr.length} {tasksArr.length === 1 ? "task" : "tasks"})
+        </h2>
         <div className={styles.tasks__iconsAndSort}>
           <span className={styles.tasks__icons}>
             <svg
@@ -109,7 +111,9 @@ const Tasks = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className={`${styles.tasks__longTasksIcon} ${theme === "dark" && "dark-text-clr-2"} ${!isTasksShort && "txt-third"}`}
+              className={`${styles.tasks__longTasksIcon} ${
+                theme === "dark" ? (isTasksShort ? "dark-text-clr-2" : "txt-third") : isTasksShort ? "" : "txt-third"
+              }`}
             >
               <path
                 strokeLinecap="round"
@@ -124,7 +128,9 @@ const Tasks = () => {
               viewBox="0 0 24 24"
               strokeWidth="{1.5}"
               stroke="currentColor"
-              className={`${styles.tasks__shortTasksIcon} ${theme === "dark" && "dark-text-clr-2"} ${isTasksShort && "txt-third"}`}
+              className={`${styles.tasks__longTasksIcon} ${
+                theme === "dark" ? (isTasksShort ? "txt-third" : "dark-text-clr-2") : isTasksShort ? "txt-third" : ""
+              }`}
             >
               <path
                 strokeLinecap="round"
@@ -162,7 +168,9 @@ const Tasks = () => {
           })}
           <button
             onClick={handleAddTask}
-            className={`${styles.tasks__addTask} ${isTasksShort ? styles.tasks__addShortTask : styles.tasks__addLongTask}`}
+            className={`${styles.tasks__addTask} ${isTasksShort ? styles.tasks__addShortTask : styles.tasks__addLongTask} ${
+              theme === "dark" && "dark-text-clr dark-bg"
+            }`}
           >
             Add Task
           </button>

@@ -13,6 +13,9 @@ import {
   deleteCurrentDirectories,
   deleteCurrentTasks,
   showProfiles,
+  deleteProfile,
+  deleteDirectoriesOfProfile,
+  deleteTasksOfProfile,
 } from "../../store/actions";
 
 type propsType = {
@@ -21,20 +24,21 @@ type propsType = {
 
 const DeleteData = ({ setIsDeleteData }: propsType) => {
   const dispatch = useDispatch();
-  const { theme } = useSelector((state: storeType) => {
+  const { theme, currentProfile } = useSelector((state: storeType) => {
     return state;
   });
   const navigate = useNavigate();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(deleteProfiles());
-    dispatch(deleteDirectories());
-    dispatch(deleteTasks());
-
     dispatch(deleteCurrentProfiles());
     dispatch(deleteCurrentDirectories());
     dispatch(deleteCurrentTasks());
+
+    dispatch(deleteTasksOfProfile(currentProfile.userId));
+    dispatch(deleteDirectoriesOfProfile(currentProfile.userId));
+    dispatch(deleteProfile(currentProfile));
+
     setIsDeleteData(false);
     navigate("/");
     dispatch(showProfiles(true));

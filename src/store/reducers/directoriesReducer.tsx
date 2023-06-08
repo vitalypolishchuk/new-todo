@@ -1,5 +1,5 @@
 import { directories } from "../../data";
-import { ADD_DIRECTORY, SET_DIRECTORIES, DELETE_DIRECTORY, EDIT_DIRECTORY, DELETE_DIRECTORIES } from "../actionTypes";
+import { ADD_DIRECTORY, SET_DIRECTORIES, DELETE_DIRECTORY, EDIT_DIRECTORY, DELETE_DIRECTORIES, DELETE_DIRECTORIES_OF_PROFILE } from "../actionTypes";
 import { directoriesType, dirType, editDirType } from "../storeTypes";
 
 const INITIAL_STATE: directoriesType[] = [];
@@ -50,6 +50,15 @@ const directoriesReducer = (state = INITIAL_STATE, action: actionType) => {
             };
           }
           return dir;
+        });
+      })();
+    case DELETE_DIRECTORIES_OF_PROFILE:
+      return (() => {
+        const { userId } = action.payload as { userId: string };
+        return state.filter((dir) => {
+          if (dir.userId !== userId) {
+            return dir;
+          }
         });
       })();
     case EDIT_DIRECTORY:

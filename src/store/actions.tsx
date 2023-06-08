@@ -31,8 +31,15 @@ import {
   DELETE_CURRENT_TASKS,
   SHOW_LEFT_MENU,
   SHOW_RIGHT_MENU,
+  EDIT_DIRECTORY_IN_CURRENT_TASKS,
+  EDIT_DIRECTORY_IN_TASKS,
+  DELETE_CURRENT_TASKS_OF_DIRECTORY,
+  DELETE_TASKS_OF_DIRECTORY,
+  DELETE_PROFILE,
+  DELETE_DIRECTORIES_OF_PROFILE,
+  DELETE_TASKS_OF_PROFILE,
 } from "./actionTypes";
-import { profileType, taskType, deleteTaskType, directoriesType, dirType, editDirType } from "./storeTypes";
+import { profileType, taskType, deleteTaskType, directoriesType, dirType, editDirType, editTasksDirType, deleteTasksOfDirType } from "./storeTypes";
 
 export const showProfiles = (isShow: boolean) => {
   return { type: SHOW_PROFILES, payload: isShow };
@@ -134,6 +141,22 @@ export const setCurrentTasks = (tasks: taskType[]) => {
   return { type: SET_CURRENT_TASKS, payload: tasks };
 };
 
+export const editCurTasksDir = (dirs: editTasksDirType) => {
+  return { type: EDIT_DIRECTORY_IN_CURRENT_TASKS, payload: dirs };
+};
+
+export const editTasksDir = (dirs: editTasksDirType) => {
+  return { type: EDIT_DIRECTORY_IN_TASKS, payload: dirs };
+};
+
+export const deleteCurTasksOfDir = (directory: deleteTasksOfDirType) => {
+  return { type: DELETE_CURRENT_TASKS_OF_DIRECTORY, payload: directory };
+};
+
+export const deleteTasksOfDir = (directory: deleteTasksOfDirType) => {
+  return { type: DELETE_TASKS_OF_DIRECTORY, payload: directory };
+};
+
 export const addTheme = (theme: string) => {
   return { type: ADD_THEME, payload: theme };
 };
@@ -142,12 +165,24 @@ export const deleteProfiles = () => {
   return { type: DELETE_PROFILES };
 };
 
+export const deleteProfile = (profile: profileType) => {
+  return { type: DELETE_PROFILE, payload: profile };
+};
+
 export const deleteDirectories = () => {
   return { type: DELETE_DIRECTORIES };
 };
 
+export const deleteDirectoriesOfProfile = (userId: string) => {
+  return { type: DELETE_DIRECTORIES_OF_PROFILE, payload: { userId } };
+};
+
 export const deleteTasks = () => {
   return { type: DELETE_TASKS };
+};
+
+export const deleteTasksOfProfile = (userId: string) => {
+  return { type: DELETE_TASKS_OF_PROFILE, payload: { userId } };
 };
 
 export const deleteCurrentProfiles = () => {

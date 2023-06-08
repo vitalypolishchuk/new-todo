@@ -1,11 +1,19 @@
-import { ADD_CURRENT_TASK, SET_CURRENT_TASKS, DELETE_CURRENT_TASK, EDIT_CURRENT_TASK, DELETE_CURRENT_TASKS } from "../actionTypes";
-import { deleteTaskType, taskType } from "../storeTypes";
+import {
+  ADD_CURRENT_TASK,
+  SET_CURRENT_TASKS,
+  DELETE_CURRENT_TASK,
+  EDIT_CURRENT_TASK,
+  DELETE_CURRENT_TASKS,
+  EDIT_DIRECTORY_IN_CURRENT_TASKS,
+  DELETE_CURRENT_TASKS_OF_DIRECTORY,
+} from "../actionTypes";
+import { deleteTaskType, taskType, editTasksDirType, deleteTasksOfDirType } from "../storeTypes";
 
 const INITIAL_STATE: taskType[] = [];
 
 type actionType = {
   type: string;
-  payload?: taskType[] | taskType | deleteTaskType;
+  payload?: taskType[] | taskType | deleteTaskType | editTasksDirType | deleteTasksOfDirType;
 };
 
 const currentTasksReducer = (state = INITIAL_STATE, action: actionType) => {
@@ -31,6 +39,27 @@ const currentTasksReducer = (state = INITIAL_STATE, action: actionType) => {
             return { ...task, info };
           }
           return task;
+        });
+      })();
+    case EDIT_DIRECTORY_IN_CURRENT_TASKS:
+      return (() => {
+        const { prevDir, curDir } = action.payload as editTasksDirType;
+        return state.map((task: taskType) => {
+          if (prevDir === task.info.directory) {
+            console.log(prevDir, task.info.directory);
+            return { ...task, info: { ...task.info, directory: curDir } };
+          }
+          return task;
+        });
+      })();
+    case DELETE_CURRENT_TASKS_OF_DIRECTORY:
+      return (() => {
+        const { directory } = action.payload as deleteTasksOfDirType;
+        return state.filter((task: taskType) => {
+          console.log(directory, task.info.directory);
+          if (directory !== task.info.directory) {
+            return task;
+          }
         });
       })();
     default:

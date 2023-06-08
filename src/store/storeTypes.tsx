@@ -30,6 +30,15 @@ export type deleteTaskType = {
   taskId: string;
 };
 
+export type editTasksDirType = {
+  prevDir: string;
+  curDir: string;
+};
+
+export type deleteTasksOfDirType = {
+  directory: string;
+};
+
 export type profileAndDirsType = profileType & {
   directories: string[];
   tasks: taskType[];

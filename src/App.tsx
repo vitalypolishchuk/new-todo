@@ -25,6 +25,7 @@ function App() {
               tasks.map(({ name }: tasksType) => {
                 return <Route key={name} path="/:urlId" element={<Tasks />} />;
               })}
+            <Route path="*" element={<MainPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

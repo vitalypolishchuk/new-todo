@@ -8,13 +8,14 @@ import Profiles from "../Profiles/Profiles";
 import CreateProfile from "../CreateProfile/CreateProfile";
 import NewTask from "../NewTask/NewTask";
 import NewDirectory from "../AddDirectory/NewDirectory";
-import { setProfiles, setDirectories, setTasks } from "../../store/actions";
+import { setProfiles, setDirectories, setTasks, addCurrentProfile } from "../../store/actions";
 import RightSideBar from "./RightSideBar/RightSideBar";
 import { searchStr } from "../../utils/utils";
+import currentProfile from "../../store/reducers/currentProfileReducer";
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const { profiles, directories, tasks, showComponents, currentTasks } = useSelector((state: storeType) => {
+  const { profiles, directories, tasks, showComponents, currentTasks, currentProfile } = useSelector((state: storeType) => {
     return state;
   });
 
@@ -22,6 +23,7 @@ const MainPage = () => {
     const profilesStr = localStorage.getItem("profiles");
     const directoriesStr = localStorage.getItem("directories");
     const tasksStr = localStorage.getItem("tasks");
+    const currentProfileStr = localStorage.getItem("currentProfile");
     if (profilesStr) {
       const profiles = JSON.parse(profilesStr);
       dispatch(setProfiles(profiles));
@@ -33,6 +35,10 @@ const MainPage = () => {
     if (tasksStr) {
       const tasks = JSON.parse(tasksStr);
       dispatch(setTasks(tasks));
+    }
+    if (currentProfileStr) {
+      const currentProfile = JSON.parse(currentProfileStr);
+      dispatch(addCurrentProfile(currentProfile));
     }
   }, []);
 
@@ -59,6 +65,14 @@ const MainPage = () => {
       localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   }, [tasks]);
+
+  useEffect(() => {
+    if (!currentProfile.userId) {
+      localStorage.removeItem("currentProfile");
+    } else {
+      localStorage.setItem("currentProfile", JSON.stringify(currentProfile));
+    }
+  }, [currentProfile]);
 
   return (
     <>

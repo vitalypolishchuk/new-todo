@@ -54,6 +54,16 @@
     border-radius: 50%;
   }
 
+  &__delete {
+    bottom: 2rem;
+    right: 0;
+    position: absolute;
+    color: $txt-completed;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+  }
+
   &__date {
     position: absolute;
     top: 65%;

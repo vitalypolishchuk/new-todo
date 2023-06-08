@@ -1,11 +1,11 @@
 import styles from "./DirectoriesList.module.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { storeType } from "../../../../store/storeTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { deleteCurrentDirectory, deleteDirectory } from "../../../../store/actions";
+import { deleteCurTasksOfDir, deleteCurrentDirectory, deleteDirectory, deleteTasksOfDir } from "../../../../store/actions";
 import EditDirectory from "../../../EditDirectory/EditDirectory";
 
 type propsType = {
@@ -19,6 +19,7 @@ const ListElement = ({ name }: propsType) => {
   const { theme, currentProfile } = useSelector((state: storeType) => {
     return state;
   });
+  const navigate = useNavigate();
 
   const [isHovered, setIsHovered] = useState(false);
   const [isShowEdit, setisShowEdit] = useState(false);
@@ -38,7 +39,10 @@ const ListElement = ({ name }: propsType) => {
 
   const handleDelete = () => {
     dispatch(deleteCurrentDirectory(name));
+    dispatch(deleteCurTasksOfDir({ directory: name }));
     dispatch(deleteDirectory({ userId: currentProfile.userId, directory: name }));
+    dispatch(deleteTasksOfDir({ directory: name }));
+    navigate("/");
   };
 
   return (

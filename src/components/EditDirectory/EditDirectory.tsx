@@ -6,7 +6,8 @@ import Input from "../Input/Input";
 import Button from "../Buttons/Button/Button";
 import CloseButton from "../Buttons/CloseButton/CloseButton";
 import Overlay from "../Overlay/Overlay";
-import { editCurrentDirectory, editDirectory, showNewDirectory } from "../../store/actions";
+import { editCurTasksDir, editCurrentDirectory, editDirectory, editTasksDir, showNewDirectory } from "../../store/actions";
+import { useNavigate } from "react-router-dom";
 
 type propsType = {
   prevTitle: string;
@@ -22,6 +23,7 @@ const EditDirectory = ({ prevTitle, setIsShowEdit }: propsType) => {
   const { theme, currentProfile, currentDirectories } = useSelector((state: storeType) => {
     return state;
   });
+  const navigate = useNavigate();
 
   const handleCLose = () => {
     dispatch(showNewDirectory(false));
@@ -48,7 +50,10 @@ const EditDirectory = ({ prevTitle, setIsShowEdit }: propsType) => {
     if (isTitleExist) return;
 
     dispatch(editCurrentDirectory({ prevTitle, title }));
+    dispatch(editCurTasksDir({ prevDir: prevTitle, curDir: title }));
     dispatch(editDirectory({ userId: currentProfile.userId, titles: { prevTitle, title } }));
+    dispatch(editTasksDir({ prevDir: prevTitle, curDir: title }));
+    navigate(`/dir/${title}`);
     setTitle("");
     setIsValidTitle(null);
     setIsShowEdit(false);

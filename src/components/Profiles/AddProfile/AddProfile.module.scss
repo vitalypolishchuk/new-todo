@@ -18,6 +18,7 @@
 
   &:hover {
     filter: brightness(95%);
+    border: none;
   }
   @include respond(md) {
     flex-basis: 32%;
