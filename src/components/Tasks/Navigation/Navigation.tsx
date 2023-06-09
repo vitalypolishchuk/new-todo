@@ -108,11 +108,13 @@ const Navigation = () => {
             <FontAwesomeIcon className={styles.navigation__bell} icon={faBell} onClick={toggleShowCurrentUncompletedTasks} />
             {!!currentUncompletedTasks.length && <span className={styles.navigation__bellDot} onClick={toggleShowCurrentUncompletedTasks}></span>}
             {!!showCurrentUncompletedTasksMenu && (
-              <span className={styles.navigation__currentTasksMenu}>
-                <h4 className={styles.navigation__currentTasksHeader}>You have {currentUncompletedTasks.length} uncompleted tasks today:</h4>
+              <span className={`${styles.navigation__currentTasksMenu} ${theme === "dark" && "dark-bg-3"}`}>
+                <h4 className={`${styles.navigation__currentTasksHeader} ${theme === "dark" && "dark-text-clr"}`}>
+                  {currentUncompletedTasks.length ? `You have ${currentUncompletedTasks.length} uncompleted tasks today:` : "Nothing to show here."}
+                </h4>
                 <ul>
                   {currentUncompletedTasks.map((task: taskType) => {
-                    return <li className={styles.navigation__currentTasksItem}>{task.info.title}</li>;
+                    return <li className={`${styles.navigation__currentTasksItem} ${theme === "dark" && "dark-text-clr"}`}>{task.info.title}</li>;
                   })}
                 </ul>
               </span>

@@ -90,10 +90,11 @@
 
   &__currentTasksHeader {
     color: $txt-light;
-    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
   }
 
   &__currentTasksItem {
+    font-size: 0.95rem;
     padding: 0.3rem 0;
     color: $txt-light;
   }
