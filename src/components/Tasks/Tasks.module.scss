@@ -69,9 +69,10 @@
     border-radius: 9px;
     border: 2px dashed rgba($border-light-gray, 0.4);
     position: relative;
+    transition: 0.2s all;
     &:hover {
       filter: brightness(95%);
-      border: none;
+      border: 2px solid $bg-main;
     }
   }
 
@@ -91,5 +92,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgba($border-light-gray, 0.4);
+  }
+
+  &__bottomLine {
+    height: 20px;
+    width: 100%;
+    display: inline-block;
   }
 }

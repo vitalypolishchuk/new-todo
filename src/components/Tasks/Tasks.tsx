@@ -175,6 +175,7 @@ const Tasks = () => {
             Add Task
           </button>
         </ul>
+        <span className={styles.tasks__bottomLine}></span>
       </div>
       {taskForEdit?.info && <NewTask task={taskForEdit} setEditTask={setTaskForEdit} />}
     </>

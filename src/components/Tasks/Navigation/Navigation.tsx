@@ -15,12 +15,19 @@ import Match from "./Match/Match";
 const Navigation = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1200);
+  const [showCurrentUncompletedTasksMenu, setShowCurrentUncompletedTasksMenu] = useState(false);
   const { currentProfile, currentTasks, theme } = useSelector((store: storeType) => {
     return store;
   });
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
   const [matchedTasks, setMatchedTasks] = useState<taskType[]>([]);
+
+  const currentUncompletedTasks = useMemo(() => {
+    return currentTasks.filter((task: taskType) => {
+      return !task.info.isCompleted;
+    });
+  }, [currentTasks]);
 
   useEffect(() => {
     if (!searchValue) {
@@ -37,7 +44,6 @@ const Navigation = () => {
   };
 
   const toggleRightMenu = () => {
-    console.log("here");
     dispatch(showRightMenu(true));
   };
 
@@ -76,6 +82,10 @@ const Navigation = () => {
     dispatch(showNewTask(true));
   };
 
+  const toggleShowCurrentUncompletedTasks = () => {
+    setShowCurrentUncompletedTasksMenu((prev) => !prev);
+  };
+
   return (
     <div className={styles.navigation}>
       <div className={styles.navigation__top}>
@@ -94,7 +104,20 @@ const Navigation = () => {
           <p className={`${theme === "dark" && "dark-text-clr-2"}`}>{curDay}</p>
         </div>
         <div className={styles.navigation__profile}>
-          <FontAwesomeIcon className={styles.navigation__bell} icon={faBell} />
+          <span className={styles.navigation__bellContainer}>
+            <FontAwesomeIcon className={styles.navigation__bell} icon={faBell} onClick={toggleShowCurrentUncompletedTasks} />
+            {!!currentUncompletedTasks.length && <span className={styles.navigation__bellDot} onClick={toggleShowCurrentUncompletedTasks}></span>}
+            {!!showCurrentUncompletedTasksMenu && (
+              <span className={styles.navigation__currentTasksMenu}>
+                <h4 className={styles.navigation__currentTasksHeader}>You have {currentUncompletedTasks.length} uncompleted tasks today:</h4>
+                <ul>
+                  {currentUncompletedTasks.map((task: taskType) => {
+                    return <li className={styles.navigation__currentTasksItem}>{task.info.title}</li>;
+                  })}
+                </ul>
+              </span>
+            )}
+          </span>
           {!isMobile && <Button color="active" size="sm" text="Add New Task" width="100%" height="100%" handleClick={handleAddTask} />}
           {!isDesktop && <img onClick={toggleRightMenu} className={styles.navigation__userImg} src={currentProfile.userImg} />}
         </div>
