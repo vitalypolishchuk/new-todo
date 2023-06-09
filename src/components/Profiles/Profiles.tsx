@@ -42,42 +42,6 @@ const Profiles = () => {
     dispatch(showCreateProfile(true));
   };
 
-  // useEffect(() => {
-  //   const curProfileStr = localStorage.getItem("currentProfile");
-  //   let curProfile: profileType | null = null;
-
-  //   if (curProfileStr) {
-  //     curProfile = JSON.parse(curProfileStr);
-  //   }
-
-  //   const directoriesStr = localStorage.getItem("directories");
-  //   let directories: directoriesType[] | null = null;
-
-  //   if (directoriesStr) {
-  //     directories = JSON.parse(directoriesStr);
-  //   }
-
-  //   const tasksStr = localStorage.getItem("tasks");
-  //   let tasks: taskType[] | null = null;
-
-  //   if (tasksStr) {
-  //     tasks = JSON.parse(tasksStr);
-  //   }
-
-  //   if (curProfile) {
-  //     const curDirs = directories?.find((dir: directoriesType) => {
-  //       return curProfile?.userId === dir.userId;
-  //     }) ?? { directories: [] };
-
-  //     const curTasks =
-  //       tasks?.filter((task: taskType) => {
-  //         return curProfile?.userId === task.userId;
-  //       }) ?? [];
-
-  //     handleLoadProfile({ ...curProfile, directories: curDirs.directories, tasks: curTasks });
-  //   }
-  // }, []);
-
   return (
     <>
       <div className={`${styles.profiles} ${theme === "dark" && "dark-bg"}`}>
@@ -87,7 +51,7 @@ const Profiles = () => {
           <AddProfile handleAddProfile={handleAddProfile} />
         </div>
       </div>
-      <Overlay />
+      <Overlay zIndex={1001} />
     </>
   );
 };

@@ -153,7 +153,7 @@ const NewTask = ({ task, setEditTask }: propsType) => {
           <Button color="active" size="md" type="submit" text="SUBMIT" width="100%" />
         </form>
       </div>
-      <Overlay isShowComponent={showNewTask} />
+      <Overlay isShowComponent={showNewTask} zIndex={1001} />
     </>
   );
 };
